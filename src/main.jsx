@@ -5,7 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./components/LoginPage.jsx";
 import Acount from "./components/Acount.jsx";
-import DarkMode from "./components/DarkMode.jsx";
+import DarkMode from "./components/dark-mode/DarkMode.jsx";
 
 const router = createBrowserRouter([
   {
