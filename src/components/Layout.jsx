@@ -3,7 +3,9 @@ import React from "react";
 export default function Layout({ children }) {
   return (
     <>
-      <main className="h-[900px] w-[1200px] p-2">{children}</main>
+      <div className="flex items-center  h-screen w-[1200px] p-2">
+        {children}
+      </div>
     </>
   );
 }

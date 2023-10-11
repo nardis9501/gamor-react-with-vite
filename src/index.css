@@ -2,13 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+
+  ul,
+  ol {
+    list-style: revert;
+  }
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  --tw-text-opacity: 1;
+  color: rgb(51 65 85 / var(--tw-text-opacity));
   background-color: #6b7280;
   ;
 
@@ -61,6 +70,16 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+html {
+  --tw-text-opacity: 1;
+  color: rgb(51 65 85 / var(--tw-text-opacity))
+}
+
+html.dark {
+  --tw-text-opacity: 1;
+  color: rgb(226 232 240 / var(--tw-text-opacity))
 }
 
 html.dark a:hover {
