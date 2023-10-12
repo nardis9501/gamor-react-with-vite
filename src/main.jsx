@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./components/LoginPage.jsx";
-import Acount from "./components/Acount.jsx";
+import Account from "./components/Acount.jsx";
 import DarkMode from "./components/dark-mode/DarkMode.jsx";
 
 const router = createBrowserRouter([
@@ -17,8 +17,8 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: "login/create-acount",
-    element: <Acount />,
+    path: "login/create-account",
+    element: <Account />,
   },
 ]);
 
