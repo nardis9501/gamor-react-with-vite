@@ -12,8 +12,8 @@ export default function Player({ userId, username, avatarUrl, onClick }) {
         <span className="flex place-content-center">
           <img
             className=" w-15 h-15 bg-white rounded-full"
-            src={`${avatarUrl}`}
-            alt="foto"
+            src={`https://unavatar.io/github/${username}`}
+            alt={`${username} avatar`}
             width={20}
             height={20}
           />

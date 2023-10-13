@@ -40,9 +40,15 @@ export default function Board({ username }) {
       {board.map((username, index) => (
         <li
           key={index}
-          className="grid list-none place-content-center  bg-black w-14 h-14 p-1 rounded-lg"
+          className="grid list-none place-content-center  w-14 h-14 p-1 "
         >
-          {username && <span>{username}</span>}
+          {username && (
+            <img
+              className="rounded-lg"
+              src={`https://unavatar.io/github/${username}`}
+              alt={`${username} avatar`}
+            />
+          )}
         </li>
       ))}
     </>
