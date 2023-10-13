@@ -13,8 +13,8 @@ function App() {
     <>
       <Layout>
         <main className="conteiner flex flex-col justify-between  dark:bg-primary bg-slate-200 shadow-lg dark:shadow-lg h-full w-full rounded-xl p-3">
-          <header className="flex flex-row items-center justify-between h-1/5 w-full">
-            <section className="flex flex-col md:flex-row md:items-center">
+          <header className="flex flex-row items-center justify-between h-1/6  lg:h-1/5 w-full">
+            <section className="flex flex-col  md:flex-row md:items-center">
               <h2 className="text-2xl md:p-2">Home</h2>
               <Navbar />
             </section>
@@ -28,7 +28,7 @@ function App() {
             </div>
           </header>
           <MainBoard />
-          <footer>hola de nuevo</footer>
+          <footer></footer>
         </main>
       </Layout>
     </>

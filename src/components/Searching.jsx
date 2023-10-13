@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Player from "./Player";
 import players from "../players/players.json";
-export default function Searching(props) {
+export default function Searching({ OnClick }) {
   const [gamer, setGamer] = useState(players);
   const [nameGame, setNameGame] = useState("");
   const [error, setError] = useState(false);
   const [notFound, setNotFount] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
+
     if (nameGame) {
       console.log(nameGame);
       const playerFilter = players.filter(
@@ -15,7 +16,7 @@ export default function Searching(props) {
       );
 
       if (playerFilter.length === 0) {
-        return setNotFount(true);
+        setNotFount(true);
       }
 
       return setGamer(playerFilter);
@@ -31,6 +32,10 @@ export default function Searching(props) {
     setError(false);
     setNotFount(false);
     setNameGame(value.toLowerCase());
+  };
+
+  const handlerOnclik = (username) => {
+    OnClick(username);
   };
 
   return (
@@ -64,14 +69,16 @@ export default function Searching(props) {
           {gamer.map((player) => (
             <Player
               key={player.id}
+              userId={player.id}
               username={player.username}
               avatarUrl={player.url}
+              onClick={handlerOnclik}
             />
           ))}
         </ol>
         <button
           type="submit"
-          className="relative bg-black text-slate-200 dark:bg-white dark:text-slate-700 shadow-lg top-0  mx-2"
+          className="bg-black text-slate-200 dark:bg-white dark:text-slate-700 shadow-lg top-0  mx-2"
         >
           {" "}
           search now
