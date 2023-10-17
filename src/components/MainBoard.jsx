@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SingButton from "./SingButton";
+import AuthenticationButton from "./Authentication/AuthenticationButton";
 import Searching from "./Searching";
 import Board from "./Board";
 
@@ -33,10 +33,10 @@ export default function MainBoard(props) {
           </p>
 
           <span className="grid m-2 col-span-3 place-content-center">
-            <SingButton />
+            <AuthenticationButton />
           </span>
         </div>
-        <div className="grid relative place-conte p-4  bg-violet-600 dark:bg-orange-500">
+        <div className="grid relative p-4  bg-violet-600 dark:bg-orange-500">
           <div className="content-start w-full">
             <header className="">
               <h2 className="mt-10 text-slate-200 capitalize font-bold sm:text-xl md:text-xl lg:text-2xl">
@@ -47,9 +47,7 @@ export default function MainBoard(props) {
               </h3>
             </header>
 
-            <span className="absolute top-0 right-1/2 translate-x-1/2 md:translate-y-1/3 grid grid-cols-2 place-content-center gap-10 w-full mt-28">
-              <Board username={username} />
-            </span>
+            <Board username={username} />
           </div>
 
           <img
