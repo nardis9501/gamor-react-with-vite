@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Layout from "./components/Layout";
 import MainBoard from "./components/MainBoard";
 import Navbar from "./components/Navbar";
-import SingButton from "./components/SingButton";
+import AuthenticationButton from "./components/Authentication/AuthenticationButton";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
               </h1>
             </section>
             <div className="">
-              <SingButton displayHidden />
+              <AuthenticationButton displayHidden />
             </div>
           </header>
           <MainBoard />

@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LoginPage from "./components/LoginPage.jsx";
-import Account from "./components/Acount.jsx";
+import LoginPage from "./components/Authentication/LoginPage.jsx";
+import AccountPage from "./components/Authentication/AcountPage.jsx";
 import DarkMode from "./components/dark-mode/DarkMode.jsx";
 
 const router = createBrowserRouter([
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: "login/create-account",
-    element: <Account />,
+    element: <AccountPage />,
   },
 ]);
 

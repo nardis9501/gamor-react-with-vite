@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function SingButton({ displayHidden }) {
+export default function AuthenticationButton({ displayHidden }) {
   if (displayHidden) {
     return (
       <>
