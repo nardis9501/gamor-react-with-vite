@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./components/Authentication/LoginPage.jsx";
 import AccountPage from "./components/Authentication/AcountPage.jsx";
 import DarkMode from "./components/dark-mode/DarkMode.jsx";
+import { Provider } from "react-redux";
+import { store } from "./redux/store/index.js";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +27,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <DarkMode>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </DarkMode>
   </React.StrictMode>
 );

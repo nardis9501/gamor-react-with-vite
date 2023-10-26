@@ -1,42 +1,46 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useAppSelector } from "../hooks/store";
+import { saveBoardToStorage } from "./logic/persistenceStorage";
 
-export default function Board({ username }) {
-  const [board, setBoard] = useState(Array(0).fill(null));
-  const [counter, setCounter] = useState(-1);
-  const [error, setError] = useState(false);
+export default function Board() {
+  const [board, setBoard] = useState(() => {
+    const persistenceBoard = localStorage.getItem(
+      "persistenceBoardInLocalStorage"
+    );
+    if (persistenceBoard) {
+      return JSON.parse(persistenceBoard);
+    }
+    return Array(0).fill(null);
+  });
+  const [counter, setCounter] = useState(() => {
+    const persistenceCounter = localStorage.getItem("counter");
+    if (persistenceCounter) {
+      return persistenceCounter;
+    }
+    return 0;
+  });
+  const { username } = useAppSelector((state) => state.username);
+
   useEffect(() => {
-    console.log(username.length);
-    if (counter !== -1) {
+    if (username) {
       const newBoard = [...board];
-      console.log(counter);
       newBoard[counter] = username;
       setBoard(newBoard);
+      setCounter(counter + 1);
     }
-    if (counter === 9) {
-      setError(true);
-      return;
-    }
-    setCounter(counter + 1);
   }, [username]);
 
-  if (error) {
-    // return alert("sorry, at the moment only eight users can be added");
-    // return (
-    //   <header className="grid place-content-center absolute top-0 left-0 h-screen w-screen select-none  bg-black/50">
-    //     <section className="flex flex-col items-center bg-slate-900 border-solid border-2 border-white/80 w-72 h-auto rounded-xl p-2">
-    //       <h2 className="text-3xl">
-    //         sorry, at the moment only eight users can be added
-    //       </h2>
-    //       <footer>
-    //         <button className="m-2"></button>
-    //       </footer>
-    //     </section>
-    //   </header>
+  useEffect(() => {
+    // localStorage.setItem(
+    //   "persistenceBoardInLocalStorage",
+    //   JSON.stringify(board)
     // );
-  }
+    saveBoardToStorage({ Board: board, Counter: counter });
+  }, [board]);
+
   return (
     <>
-      <span className="grid grid-cols-2  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2    gap-3 sm:gap-6 w-full mt-2 ">
+      <span className="grid grid-cols-2  absolute overflow-y-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2    gap-3 sm:gap-6 w-full max-h-[99%] py-2 ">
         {board.map((username, index) => (
           <li
             key={index}

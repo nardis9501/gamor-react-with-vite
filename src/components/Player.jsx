@@ -1,8 +1,14 @@
-import React from "react";
+import PropTypes from "prop-types";
+import { deleteUserById } from "../redux/slices/getUsersSlice";
+import { useAppDispatch } from "../hooks/store";
+import { addUsername } from "../redux/slices/getUsernameSlice";
 
-export default function Player({ userId, username, avatarUrl, onClick }) {
+function Player({ userId, username }) {
+  const dispatch = useAppDispatch();
   const handlerClick = () => {
-    onClick(username);
+    console.log(username);
+    dispatch(deleteUserById(userId));
+    dispatch(addUsername(username));
   };
   return (
     <>
@@ -43,3 +49,8 @@ export default function Player({ userId, username, avatarUrl, onClick }) {
     </>
   );
 }
+Player.propTypes = {
+  userId: PropTypes.number,
+  username: PropTypes.string,
+};
+export default Player;

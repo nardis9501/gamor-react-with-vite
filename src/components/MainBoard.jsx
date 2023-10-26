@@ -1,13 +1,8 @@
-import React, { useState } from "react";
 import AuthenticationButton from "./Authentication/AuthenticationButton";
 import Searching from "./Searching";
 import Board from "./Board";
 
-export default function MainBoard(props) {
-  const [username, setUsername] = useState([]);
-  const handlerClick = (username) => {
-    setUsername(username);
-  };
+export default function MainBoard() {
   return (
     <>
       <section className="grid md:grid-cols-3 overflow-auto bg-slate-100 dark:bg-secondary shadow rounded-xl  md:h-4/5">
@@ -46,8 +41,7 @@ export default function MainBoard(props) {
                 join live stream
               </h3>
             </header>
-
-            <Board username={username} />
+            <Board />
           </div>
 
           <img
@@ -66,7 +60,7 @@ export default function MainBoard(props) {
         <ol className="grid list-none p-3">
           <li></li>
           <li>
-            <Searching OnClick={handlerClick} />
+            <Searching />
           </li>
         </ol>
       </section>

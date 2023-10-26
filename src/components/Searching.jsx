@@ -1,25 +1,37 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import Player from "./Player";
 import players from "../players/players.json";
-export default function Searching({ OnClick }) {
-  const [gamer, setGamer] = useState(players);
+import { getUsers } from "../redux/slices/getUsersSlice";
+import { useAppDispatch, useAppSelector } from "../hooks/store";
+export default function Searching() {
+  const [gamer, setGamer] = useState();
   const [nameGame, setNameGame] = useState("");
   const [error, setError] = useState(false);
   const [notFound, setNotFount] = useState(false);
+
+  const { users } = useAppSelector((state) => state.users);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    if (users === null) {
+      dispatch(getUsers(players));
+    }
+    setGamer(users);
+  }, [users]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (nameGame) {
       console.log(nameGame);
-      const playerFilter = players.filter(
+      const filterUsersByFavoriteGame = users.filter(
         (player) => player.favoriteGame.toLowerCase() === nameGame
       );
 
-      if (playerFilter.length === 0) {
+      if (filterUsersByFavoriteGame.length === 0) {
         setNotFount(true);
       }
 
-      return setGamer(playerFilter);
+      return setGamer(filterUsersByFavoriteGame);
     }
     setError(true);
   };
@@ -32,10 +44,6 @@ export default function Searching({ OnClick }) {
     setError(false);
     setNotFount(false);
     setNameGame(value.toLowerCase());
-  };
-
-  const handlerOnclik = (username) => {
-    OnClick(username);
   };
 
   return (
@@ -66,15 +74,14 @@ export default function Searching({ OnClick }) {
               enter another game
             </span>
           )}
-          {gamer.map((player) => (
-            <Player
-              key={player.id}
-              userId={player.id}
-              username={player.username}
-              avatarUrl={player.url}
-              onClick={handlerOnclik}
-            />
-          ))}
+          {gamer &&
+            gamer.map((player) => (
+              <Player
+                key={player.id}
+                userId={+player.id}
+                username={player.username}
+              />
+            ))}
         </ol>
         <button
           type="submit"
