@@ -12,30 +12,24 @@ export default function Board() {
     }
     return Array(0).fill(null);
   });
-  const [counter, setCounter] = useState(() => {
-    const persistenceCounter = localStorage.getItem("counter");
-    if (persistenceCounter) {
-      return persistenceCounter;
-    }
-    return 0;
-  });
+  // const [counter, setCounter] = useState(() => {
+  //   const persistenceCounter = localStorage.getItem("counter");
+  //   if (persistenceCounter) {
+  //     return persistenceCounter;
+  //   }
+  //   return 0;
+  // });
   const { username } = useAppSelector((state) => state.username);
-
   useEffect(() => {
     if (username) {
       const newBoard = [...board];
-      newBoard[counter] = username;
+      newBoard.push(username);
       setBoard(newBoard);
-      setCounter(counter + 1);
     }
   }, [username]);
 
   useEffect(() => {
-    // localStorage.setItem(
-    //   "persistenceBoardInLocalStorage",
-    //   JSON.stringify(board)
-    // );
-    saveBoardToStorage({ Board: board, Counter: counter });
+    saveBoardToStorage({ Board: board });
   }, [board]);
 
   return (
@@ -48,11 +42,15 @@ export default function Board() {
           >
             {username && (
               <img
-                className="rounded-lg w-8 h-8 sm:w-11 sm:h-11 md:w-12 md:h-12"
+                className="rounded-lg  hover:z-0 w-8 h-8 sm:w-11 sm:h-11 md:w-12 md:h-12"
                 src={`https://unavatar.io/github/${username}`}
                 alt={`${username} avatar`}
               />
             )}
+            <span className="absolute opacity-0 hover:opacity-100   bg-slate-400/50 p-1 rounded">
+              {" "}
+              X
+            </span>
           </li>
         ))}{" "}
       </span>
