@@ -65,9 +65,9 @@ export default function LoginPage(props) {
             <section>
               <h2 className="mb-2">Or Sign up using</h2>
               <div className="flex flex-row items-center justify-center gap-2">
-                <Logo url={"/facebook.png"} />
-                <Logo url={"/google.png"} />
-                <Logo url={"/twitter.png"} />
+                <Logo url={"./facebook.png"} />
+                <Logo url={"./google.png"} />
+                <Logo url={"./twitter.png"} />
               </div>
             </section>
 

@@ -46,13 +46,13 @@ export default function MainBoard() {
 
           <img
             className="dark:hidden object-scale-down"
-            src="/fortnite.jpg"
+            src="./fortnite.jpg"
             alt="fortnite game"
           />
 
           <img
             className="hidden dark:inline-block object-contain"
-            src="/fortnite2.jpg"
+            src="./fortnite2.jpg"
             alt="fortnite game"
           />
         </div>
