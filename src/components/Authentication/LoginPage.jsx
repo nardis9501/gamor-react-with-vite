@@ -73,7 +73,7 @@ export default function LoginPage(props) {
 
             <section>
               <h2 className="mb-2">Or Sign up using</h2>
-              <Link to={"create-acount"}>Create Acount</Link>
+              <Link to={"create-account"}>Create Account</Link>
             </section>
           </div>
         </section>
