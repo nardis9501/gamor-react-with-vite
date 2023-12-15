@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./components/Authentication/LoginPage.jsx";
 import AccountPage from "./components/Authentication/AcountPage.jsx";
 import DarkMode from "./components/dark-mode/DarkMode.jsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/index.js";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
