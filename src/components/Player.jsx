@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 import { deleteUserById } from "../redux/slices/getUsersSlice";
 import { useAppDispatch } from "../hooks/store";
-import { addUsername } from "../redux/slices/getUsernameSlice";
+import { getUserData } from "../redux/slices/getUserDataSlice";
 
 function Player({ userId, username }) {
   const dispatch = useAppDispatch();
   const handlerClick = () => {
     console.log(username);
     dispatch(deleteUserById(userId));
-    dispatch(addUsername(username));
+    dispatch(getUserData(username));
   };
   return (
     <>

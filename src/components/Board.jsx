@@ -19,7 +19,7 @@ export default function Board() {
   //   }
   //   return 0;
   // });
-  const { username } = useAppSelector((state) => state.username);
+  const { username } = useAppSelector((state) => state.userData);
   useEffect(() => {
     if (username) {
       const newBoard = [...board];
@@ -31,6 +31,10 @@ export default function Board() {
   useEffect(() => {
     saveBoardToStorage({ Board: board });
   }, [board]);
+
+  const handlerClick = (userId) => {
+    console.log("user deleted");
+  };
 
   return (
     <>
@@ -47,7 +51,10 @@ export default function Board() {
                 alt={`${username} avatar`}
               />
             )}
-            <span className="absolute opacity-0 hover:opacity-100   bg-slate-400/50 p-1 rounded">
+            <span
+              onClick={handlerClick}
+              className="absolute opacity-0 hover:opacity-100   bg-slate-400/50 p-1 rounded"
+            >
               {" "}
               X
             </span>
